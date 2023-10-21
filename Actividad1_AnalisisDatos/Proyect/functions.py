@@ -53,7 +53,7 @@ def clean_special_numbers(dataframe, column):
     dataframe[column] = dataframe[column].str.replace('[^0-9.]', '', regex=True)
     return dataframe
 
-
+#Clean dataset
 def clean_dataset(data):
     header = ['TIPO_DOCUMENTO',
             'NACIONALIDAD',
@@ -559,3 +559,69 @@ def clean_dataset(data):
     return data
 
 
+
+def create_dataframes_to_tables(dataframe):
+
+    #create dataframe to tbl estudiantes
+    df_estudiantes = dataframe.loc[:,['ID_CONSECUTIVO',
+                                      'FECHA_NACIMIENTO',
+                                      'TIENE_ETNIA',
+                                      'ETNIA',
+                                      'DEDICACION_LECTURADIARIA',
+                                      'COLEGIO_COD_DANE_ESTABLECIMIENTO',
+                                      'GENERO',
+                                      'NACIONALIDAD',
+                                      'TIENE_NUMLIBROS',
+                                      'DEDICACION_INTERNET',
+                                      'HORAS_SEMANATRABAJA']
+                                    ]
+    
+    df_estudiantes.to_csv('prestage\dt_estudiantes.csv', index=False)
+
+    #create dataframe to tbl puntaje
+    df_puntaje = dataframe.loc[:,['ID_CONSECUTIVO',
+                                  'PUNT_GLOBAL',
+                                  'PUNT_LECTURA_CRITICA',
+                                  'PUNT_MATEMATICAS',
+                                  'PUNT_CIENCIAS_NATURALES',
+                                  'PUNT_SOCIALES_CIUDADANAS',
+                                  'PUNT_INGLES',
+                                  'DESEMP_INGLES']
+                                ]
+    df_puntaje.to_csv('prestage\dt_puntaje.csv', index=False)
+
+    #create dataframe to residencia estudiante
+    df_residencia_estudiante = dataframe.loc[:,['ID_CONSECUTIVO',
+                                                'COD_RESIDE_DEPTO',
+                                                'DEPTO_RESIDE',
+                                                'COD_MUNICIPIO_RESIDE',
+                                                'MUNICIPIO_RESIDE',
+                                                'PAIS_RESIDENCIA',
+                                                'ESTRATO_VIVIENDA',
+                                                'PERSONAS_HOGAR',
+                                                'CUARTOS_HOGAR']
+                                            ]
+    df_residencia_estudiante.to_csv('prestage\dt_residencia_estudiante.csv', index=False)
+
+    #create dataframe to tecnologia_hogar
+    df_tecnologia_hogar = dataframe.loc[:,['ID_CONSECUTIVO',
+                                           'TIENE_SERVICIOINTERNET',
+                                           'TIENE_COMPUTADOR',
+                                           'TIENE_CONSOLAVIDEOJUEGOS']
+                                        ]
+    df_tecnologia_hogar.to_csv('prestage\dt_tecnologia_hogar.csv', index=False)
+
+
+
+    #create dataframe to tecnologia_hogar
+    df_colegio = dataframe.loc[:,['COLEGIO_COD_DANE_ESTABLECIMIENTO', 
+                                  'COLEGIO_NOMBRE_ESTABLECIMIENTO',
+                                  'COLEGIO_BILINGUE',
+                                  'COLEGIO_NATURALEZA',
+                                  'COLEGIO_CARACTER',
+                                  'COLEGIO_COD_DEPARTAMENTO_UBICACION',
+                                  'COLEGIO_DEPARTAMENTO_UBICACION',
+                                  'COLEGIO_COD_MUNICIPIO_UBICACION',
+                                  'COLEGIO_MUNICIPIO_UBICACION']
+                                ]
+    df_colegio.to_csv('prestage\dt_colegio.csv', index=False)
