@@ -9,10 +9,6 @@ if __name__ == "__main__":
     data = clean_dataset(data)
     # create datasets
     create_dataframes_to_tables(data)
-    # send df to mysql
-    create_dataframes_to_tables(data)
-
-
     # export data csv
     # data.to_csv('prestage\dataset_clean.csv', index=False)
     # print("Finalizado")
