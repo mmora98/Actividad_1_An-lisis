@@ -4,5 +4,5 @@ MYSQL_CONFIG = {
     'user': 'admin',
     'password': 'root',
     'database': 'dwh_actividad1',
-    'port': '3399'
+    'port': '3306'
 }
