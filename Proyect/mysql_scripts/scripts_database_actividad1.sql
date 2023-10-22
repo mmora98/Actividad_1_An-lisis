@@ -1,6 +1,11 @@
 -- max_allowed_packet=4G (debe ser reemplazado pues viene con 1M por defecto) (se realiza en el my.ini de xamp (config de mysql))
 
 CREATE DATABASE dwh_actividad1;
+COMMIT;
+
+USE dwh_actividad1;
+COMMIT;
+
 
 -- CREATE TABLE ESTUDIANTE
 CREATE TABLE ESTUDIANTE (
