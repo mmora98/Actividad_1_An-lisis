@@ -138,7 +138,7 @@ def clean_dataset(data):
             'NSE_INDIVIDUAL',
             'NSE_ESTABLECIMIENTO',
             'ESTADO_INVESTIGACION',
-            'GENERACION-E'
+            'GENERACION_E'
     ]
     #Change the header of dataframe
     data.columns = header
@@ -551,11 +551,11 @@ def clean_dataset(data):
     data = clean_special_characters_letters(data, 'ESTADO_INVESTIGACION')
     data = clean_empty_characters(data, 'ESTADO_INVESTIGACION')
 
-    #-------------------------GENERACION-E---------------------
-    data = clean_special_characters_enie_and_upper(data, 'GENERACION-E')
-    data = clean_accents(data, 'GENERACION-E')
-    data = clean_special_characters_letters(data, 'GENERACION-E')
-    data = clean_empty_characters(data, 'GENERACION-E')
+    #-------------------------GENERACION_E---------------------
+    data = clean_special_characters_enie_and_upper(data, 'GENERACION_E')
+    data = clean_accents(data, 'GENERACION_E')
+    data = clean_special_characters_letters(data, 'GENERACION_E')
+    data = clean_empty_characters(data, 'GENERACION_E')
     
     #-----------------------------RETURN DATASET----------------------
     return data
@@ -575,7 +575,12 @@ def create_dataframes_to_tables(dataframe):
                                       'NACIONALIDAD',
                                       'TIENE_NUMLIBROS',
                                       'DEDICACION_INTERNET',
-                                      'HORAS_SEMANATRABAJA']
+                                      'HORAS_SEMANATRABAJA',
+                                      'GENERACION_E',
+                                      'EDUCACION_PADRE',
+                                      'EDUCACION_MADRE',
+                                      'TRABAJO_PADRE',
+                                      'TRABAJO_MADRE']
                                     ]
     #Drop duplicates
     df_estudiante = df_estudiante.drop_duplicates()
@@ -629,8 +634,10 @@ def create_dataframes_to_tables(dataframe):
                                   'COLEGIO_COD_DEPARTAMENTO_UBICACION',
                                   'COLEGIO_DEPARTAMENTO_UBICACION',
                                   'COLEGIO_COD_MUNICIPIO_UBICACION',
-                                  'COLEGIO_MUNICIPIO_UBICACION']
-                                ]
+                                  'COLEGIO_MUNICIPIO_UBICACION',
+                                  'COLEGIO_AREA_UBICACION',
+                                  'COLEGIO_JORNADA']
+                               ]
     #Drop duplicates
     df_colegio = df_colegio.drop_duplicates()
     connection_mysql_to_tbl(df_colegio, 'colegio')
